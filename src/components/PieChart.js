@@ -10,7 +10,8 @@ const PieChart = ({ pools, blockCount }) => {
   // Prepare data for Highcharts
   const chartData = pools.map(pool => ({
     name: pool.name,
-    y: (pool.blockCount / blockCount) * 100
+    y: (pool.blockCount / blockCount) * 100,
+		blockCount: pool.blockCount
   }));
 
   // Highcharts configuration options for a 3D donut chart
@@ -30,8 +31,8 @@ const PieChart = ({ pools, blockCount }) => {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
-        depth: 35,
-        innerSize: '50%', // Set the innerSize to make it a donut chart
+        depth: 75,
+        innerSize: '30%', // Set the innerSize to make it a donut chart
         dataLabels: {
           enabled: true,
           format: '<b>{point.name}</b>: {point.percentage:.1f} %'
@@ -42,7 +43,10 @@ const PieChart = ({ pools, blockCount }) => {
       name: 'Percentage',
       colorByPoint: true,
       data: chartData
-    }]
+    }],
+		tooltip: {
+			pointFormat: 'blocks: {point.blockCount}' // Format for tooltip to display blocks
+		}
   };
 
   return (
