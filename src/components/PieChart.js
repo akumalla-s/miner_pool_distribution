@@ -50,7 +50,7 @@ const PieChart = ({ pools, blockCount }) => {
   };
 
   return (
-    <div>
+    <div style={{ float: 'left', width: '50%' }}>
       <HighchartsReact
         highcharts={Highcharts}
         options={options}
