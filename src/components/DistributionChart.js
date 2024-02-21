@@ -17,7 +17,6 @@ const DistributionChart = () => {
   return (
     <div>
       {apiData && <PieChart pools={apiData.pools} blockCount={apiData.blockCount} />}
-
     </div>
   );
 };
